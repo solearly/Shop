@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "dgSpecHash": "QHq+0LvxBJ5lmqZUYtIyG4jAivcFyDsSjxU4daYpkDEtz7RQ2TmqyO0dBurbU+trXxMI0ZBFoE57We0xvoqi/g==",
+  "success": true,
+  "projectFilePath": "C:\\MyTemp\\Learning\\Shop\\CartService\\CartService.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Oleksandr_Solianyk\\.nuget\\packages\\litedb\\5.0.16\\litedb.5.0.16.nupkg.sha512",
+    "C:\\Users\\Oleksandr_Solianyk\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\Oleksandr_Solianyk\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\Oleksandr_Solianyk\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
+    "C:\\Users\\Oleksandr_Solianyk\\.nuget\\packages\\swashbuckle.aspnetcore.annotations\\6.5.0\\swashbuckle.aspnetcore.annotations.6.5.0.nupkg.sha512",
+    "C:\\Users\\Oleksandr_Solianyk\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
+    "C:\\Users\\Oleksandr_Solianyk\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
+    "C:\\Users\\Oleksandr_Solianyk\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.6.3\\swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512"
+  ],
+  "logs": []
+}

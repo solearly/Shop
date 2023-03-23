@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "OC9c/A3vl00l58ym9zJhFdBdfm8MP0zEaG84v/OeJg6y7hZhQ6lEZxarG7ASgjiERbyWSOoqh5XDvfzU9CjdJQ==",
+  "success": true,
+  "projectFilePath": "C:\\MyTemp\\Learning\\Shop\\Catalog.Entities\\Catalog.Entities.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Oleksandr_Solianyk\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\Oleksandr_Solianyk\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,17 @@
+C:\MyTemp\Learning\Shop\Catalog.BLL\bin\Debug\net5.0\Catalog.BLL.deps.json
+C:\MyTemp\Learning\Shop\Catalog.BLL\bin\Debug\net5.0\Catalog.BLL.dll
+C:\MyTemp\Learning\Shop\Catalog.BLL\bin\Debug\net5.0\ref\Catalog.BLL.dll
+C:\MyTemp\Learning\Shop\Catalog.BLL\bin\Debug\net5.0\Catalog.BLL.pdb
+C:\MyTemp\Learning\Shop\Catalog.BLL\bin\Debug\net5.0\Catalog.DAL.dll
+C:\MyTemp\Learning\Shop\Catalog.BLL\bin\Debug\net5.0\Catalog.Entities.dll
+C:\MyTemp\Learning\Shop\Catalog.BLL\bin\Debug\net5.0\Catalog.DAL.pdb
+C:\MyTemp\Learning\Shop\Catalog.BLL\bin\Debug\net5.0\Catalog.Entities.pdb
+C:\MyTemp\Learning\Shop\Catalog.BLL\obj\Debug\net5.0\Catalog.BLL.csproj.AssemblyReference.cache
+C:\MyTemp\Learning\Shop\Catalog.BLL\obj\Debug\net5.0\Catalog.BLL.GeneratedMSBuildEditorConfig.editorconfig
+C:\MyTemp\Learning\Shop\Catalog.BLL\obj\Debug\net5.0\Catalog.BLL.AssemblyInfoInputs.cache
+C:\MyTemp\Learning\Shop\Catalog.BLL\obj\Debug\net5.0\Catalog.BLL.AssemblyInfo.cs
+C:\MyTemp\Learning\Shop\Catalog.BLL\obj\Debug\net5.0\Catalog.BLL.csproj.CoreCompileInputs.cache
+C:\MyTemp\Learning\Shop\Catalog.BLL\obj\Debug\net5.0\Catalog.BLL.csproj.CopyComplete
+C:\MyTemp\Learning\Shop\Catalog.BLL\obj\Debug\net5.0\Catalog.BLL.dll
+C:\MyTemp\Learning\Shop\Catalog.BLL\obj\Debug\net5.0\ref\Catalog.BLL.dll
+C:\MyTemp\Learning\Shop\Catalog.BLL\obj\Debug\net5.0\Catalog.BLL.pdb
