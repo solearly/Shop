@@ -1,53 +1,53 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using AutoMapper;
 using Catalog.DAL.Models;
 using Catalog.DAL.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Catalog.DAL.Repositories
 {
     public class CategoryRepository : ICategoryRepository
     {
         private readonly CatalogDbContext _dbContext;
-        private readonly IMapper _mapper;
 
         public CategoryRepository(CatalogDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
-            _mapper = mapper;
         }
 
-        public IEnumerable<CategoryDto> GetCategories()
+        public async Task<IEnumerable<Category>> GetCategoriesAsync()
         {
-            var categories = _dbContext.Categories.ToList();
-            return _mapper.Map<List<CategoryDto>>(categories);
+            var categories = await _dbContext.Categories.ToListAsync();
+            return categories;
         }
 
-        public CategoryDto GetCategoryById(int categoryId)
+        public async Task<Category> GetCategoryByIdAsync(int categoryId)
         {
-            var category = _dbContext.Categories.Find(categoryId);
-            return _mapper.Map<CategoryDto>(category);
+            var category = await _dbContext.Categories.FindAsync(categoryId);
+            return category;
         }
 
-        public void AddCategory(CategoryDto category)
+        public async Task<Category> AddCategoryAsync(Category category)
         {
-            var categoryEntity = _mapper.Map<Category>(category);
-            _dbContext.Categories.Add(categoryEntity);
-            _dbContext.SaveChanges();
+            _dbContext.Categories.Add(category);
+            await _dbContext.SaveChangesAsync();
+            return category;
         }
 
-        public void UpdateCategory(CategoryDto category)
+        public async Task<Category> UpdateCategoryAsync(Category category)
         {
-            var categoryEntity = _mapper.Map<Category>(category);
-            _dbContext.Categories.Update(categoryEntity);
-            _dbContext.SaveChanges();
+            _dbContext.Categories.Update(category);
+            await _dbContext.SaveChangesAsync();
+            return category;
         }
 
-        public void DeleteCategory(int categoryId)
+        public async Task DeleteCategoryAsync(int categoryId)
         {
             var category = _dbContext.Categories.Find(categoryId);
             _dbContext.Categories.Remove(category);
-            _dbContext.SaveChanges();
+            await _dbContext.SaveChangesAsync();
         }
     }
 }

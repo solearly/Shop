@@ -1,18 +1,19 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Catalog.DAL.Models;
 
 namespace Catalog.DAL.Repositories.Interfaces
 {
     public interface ICategoryRepository
     {
-        public IEnumerable<CategoryDto> GetCategories();
+        public Task<IEnumerable<Category>> GetCategoriesAsync();
 
-        public CategoryDto GetCategoryById(int categoryId);
+        public Task<Category> GetCategoryByIdAsync(int categoryId);
 
-        public void AddCategory(CategoryDto category);
+        public Task<Category> AddCategoryAsync(Category category);
 
-        public void UpdateCategory(CategoryDto category);
+        public Task<Category> UpdateCategoryAsync(Category category);
 
-        public void DeleteCategory(int categoryId);
+        public Task DeleteCategoryAsync(int categoryId);
     }
 }

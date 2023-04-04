@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using CartService.Models;
 
 namespace CartService.DAL.Interfaces
 {
     public interface ICartService
     {
-        void AddItem(int cartId, Item item);
-        void RemoveItem(int cartId, int itemId);
-        List<Item> GetItems(int cartId);
+        Task AddItem(int cartId, Item item);
+        Task RemoveItem(int cartId, int itemId);
+        Task<IList<Item>> GetItems(int cartId);
     }
 }

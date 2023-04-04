@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using AutoMapper;
 using Catalog.BLL.Services.Interfaces;
 using Catalog.DAL.Models;
 using Catalog.DAL.Repositories.Interfaces;
@@ -8,35 +10,39 @@ namespace Catalog.BLL.Services
     public class CategoryService : ICategoryService
     {
         private readonly ICategoryRepository _categoryRepository;
+        private readonly IMapper _mapper;
 
-        public CategoryService(ICategoryRepository categoryRepository)
+        public CategoryService(ICategoryRepository categoryRepository, IMapper mapper)
         {
             _categoryRepository = categoryRepository;
+            _mapper = mapper;
         }
 
-        public IEnumerable<CategoryDto> GetCategories()
+        public async Task<IEnumerable<CategoryDto>> GetCategoriesAsync()
         {
-            return _categoryRepository.GetCategories();
+            return _mapper.Map<List<CategoryDto>>(await _categoryRepository.GetCategoriesAsync());
         }
 
-        public CategoryDto GetCategoryById(int categoryId)
+        public async Task<CategoryDto> GetCategoryByIdAsync(int categoryId)
         {
-            return _categoryRepository.GetCategoryById(categoryId);
+            return _mapper.Map<CategoryDto>(await _categoryRepository.GetCategoryByIdAsync(categoryId));
         }
 
-        public void AddCategory(CategoryDto category)
+        public async Task<CategoryDto> AddCategoryAsync(CategoryDto category)
         {
-            _categoryRepository.AddCategory(category);
+            var categoryEntity = _mapper.Map<Category>(category);
+            return _mapper.Map<CategoryDto>(await _categoryRepository.AddCategoryAsync(categoryEntity));
         }
 
-        public void UpdateCategory(CategoryDto category)
+        public async Task<CategoryDto> UpdateCategoryAsync(CategoryDto category)
         {
-            _categoryRepository.UpdateCategory(category);
+            var categoryEntity = _mapper.Map<Category>(category);
+            return _mapper.Map<CategoryDto>(await _categoryRepository.UpdateCategoryAsync(categoryEntity));
         }
 
-        public void DeleteCategory(int categoryId)
+        public async Task DeleteCategoryAsync(int categoryId)
         {
-            _categoryRepository.DeleteCategory(categoryId);
+            await _categoryRepository.DeleteCategoryAsync(categoryId);
         }
     }
 }

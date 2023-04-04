@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Catalog.BLL.Services.Interfaces;
 using Catalog.DAL.Models;
 using Microsoft.AspNetCore.Http;
@@ -18,22 +19,22 @@ namespace Catalog.API.Controllers
             _categoryService = categoryService;
         }
 
-        [HttpGet("categories")]
-        [SwaggerOperation("GetAllCategories")]
-        [SwaggerResponse(StatusCodes.Status200OK, "List of all categories.", typeof(List<Category>))]
-        public IActionResult GetAllCategories()
+        [HttpGet]
+        [SwaggerOperation(nameof(GetAllCategoriesAsync))]
+        [SwaggerResponse(StatusCodes.Status200OK, "List of all categories.", typeof(IList<Category>))]
+        public async Task<IActionResult> GetAllCategoriesAsync()
         {
-            var categories = _categoryService.GetCategories();
+            var categories = await _categoryService.GetCategoriesAsync();
             return Ok(categories);
         }
 
-        [HttpGet("categories/{id}")]
-        [SwaggerOperation("GetCategoryById")]
+        [HttpGet("{id}")]
+        [SwaggerOperation(nameof(GetCategoryByIdAsync))]
         [SwaggerResponse(StatusCodes.Status200OK, "Returns the category with the specified id.", typeof(Category))]
         [SwaggerResponse(StatusCodes.Status404NotFound, "Category with the specified id is not found.")]
-        public IActionResult GetCategoryById(int id)
+        public async Task<IActionResult> GetCategoryByIdAsync(int id)
         {
-            var category = _categoryService.GetCategoryById(id);
+            var category = await _categoryService.GetCategoryByIdAsync(id);
             if (category == null)
             {
                 return NotFound();
@@ -41,33 +42,33 @@ namespace Catalog.API.Controllers
             return Ok(category);
         }
 
-        [HttpPost("categories")]
-        [SwaggerOperation("AddCategory")]
+        [HttpPost]
+        [SwaggerOperation(nameof(AddCategoryAsync))]
         [SwaggerResponse(StatusCodes.Status201Created, "Creates a new category.", typeof(Category))]
         [SwaggerResponse(StatusCodes.Status400BadRequest, "Category data is invalid.")]
-        public IActionResult AddCategory([FromBody] CategoryDto category)
+        public async Task<IActionResult> AddCategoryAsync([FromBody] CategoryDto category)
         {
-            _categoryService.AddCategory(category);
-            return CreatedAtAction(nameof(GetCategoryById), new { id = category.Id }, category);
+            await _categoryService.AddCategoryAsync(category);
+            return CreatedAtAction("GetCategoryById", new { id = category.Id }, category);
         }
 
-        [HttpPut("categories")]
-        [SwaggerOperation("UpdateCategory")]
+        [HttpPut]
+        [SwaggerOperation(nameof(UpdateCategoryAsync))]
         [SwaggerResponse(StatusCodes.Status201Created, "Updates a category.", typeof(Category))]
         [SwaggerResponse(StatusCodes.Status400BadRequest, "Category data is invalid.")]
-        public IActionResult UpdateCategory([FromBody] CategoryDto category)
+        public async Task<IActionResult> UpdateCategoryAsync([FromBody] CategoryDto category)
         {
-            _categoryService.UpdateCategory(category);
-            return CreatedAtAction(nameof(GetCategoryById), new { id = category.Id }, category);
+            await _categoryService.UpdateCategoryAsync(category);
+            return CreatedAtAction("GetCategoryById", new { id = category.Id }, category);
         }
 
-        [HttpDelete("categories/{id}")]
-        [SwaggerOperation("DeleteCategory")]
+        [HttpDelete("{id}")]
+        [SwaggerOperation(nameof(DeleteCategory))]
         [SwaggerResponse(StatusCodes.Status201Created, "Deletes a category.", typeof(Category))]
         [SwaggerResponse(StatusCodes.Status400BadRequest, "Category data is invalid.")]
-        public IActionResult DeleteCategory([FromQuery] int id)
+        public async Task<IActionResult> DeleteCategory([FromQuery] int id)
         {
-            _categoryService.DeleteCategory(id);
+            await _categoryService.DeleteCategoryAsync(id);
             return Ok();
         }
 

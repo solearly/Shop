@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Catalog.BLL.Services.Interfaces;
 using Catalog.DAL.Models;
 using Microsoft.AspNetCore.Http;
@@ -18,22 +19,22 @@ namespace Catalog.API.Controllers
             _itemService = itemService;
         }
 
-        [HttpGet("items")]
-        [SwaggerOperation("GetAllItems")]
-        [SwaggerResponse(StatusCodes.Status200OK, "List of all items.", typeof(List<Item>))]
-        public IActionResult GetAllItems()
+        [HttpGet]
+        [SwaggerOperation(nameof(GetAllItemsAsync))]
+        [SwaggerResponse(StatusCodes.Status200OK, "List of all items.", typeof(IList<Item>))]
+        public async Task<IActionResult> GetAllItemsAsync()
         {
-            var items = _itemService.GetItems();
+            var items = await _itemService.GetItemsAsync();
             return Ok(items);
         }
 
-        [HttpGet("items/{id}")]
-        [SwaggerOperation("GetItemById")]
+        [HttpGet("{id}")]
+        [SwaggerOperation(nameof(GetItemByIdAsync))]
         [SwaggerResponse(StatusCodes.Status200OK, "Returns the item with the specified id.", typeof(Item))]
         [SwaggerResponse(StatusCodes.Status404NotFound, "Item with the specified id is not found.")]
-        public IActionResult GetItemById(int id)
+        public async Task<IActionResult> GetItemByIdAsync(int id)
         {
-            var item = _itemService.GetItemById(id);
+            var item = await _itemService.GetItemByIdAsync(id);
             if (item == null)
             {
                 return NotFound();
@@ -41,33 +42,33 @@ namespace Catalog.API.Controllers
             return Ok(item);
         }
 
-        [HttpPost("items")]
-        [SwaggerOperation("AddItem")]
+        [HttpPost]
+        [SwaggerOperation(nameof(AddItemAsync))]
         [SwaggerResponse(StatusCodes.Status201Created, "Creates a new Item.", typeof(Item))]
         [SwaggerResponse(StatusCodes.Status400BadRequest, "Item data is invalid.")]
-        public IActionResult AddItem([FromBody] ItemDto Item)
+        public async Task<IActionResult> AddItemAsync([FromBody] ItemDto item)
         {
-            _itemService.AddItem(Item);
-            return CreatedAtAction(nameof(GetItemById), new { id = Item.Id }, Item);
+            await _itemService.AddItemAsync(item);
+            return CreatedAtAction("GetItemById", new { id = item.Id }, item);
         }
 
-        [HttpPut("items")]
-        [SwaggerOperation("UpdateItem")]
+        [HttpPut]
+        [SwaggerOperation(nameof(UpdateItemAsync))]
         [SwaggerResponse(StatusCodes.Status201Created, "Updates a Item.", typeof(Item))]
         [SwaggerResponse(StatusCodes.Status400BadRequest, "Item data is invalid.")]
-        public IActionResult UpdateItem([FromBody] ItemDto Item)
+        public async Task<IActionResult> UpdateItemAsync([FromBody] ItemDto item)
         {
-            _itemService.UpdateItem(Item);
-            return CreatedAtAction(nameof(GetItemById), new { id = Item.Id }, Item);
+            await _itemService.UpdateItemAsync(item);
+            return CreatedAtAction("GetItemById", new { id = item.Id }, item);
         }
 
-        [HttpDelete("items/{id}")]
-        [SwaggerOperation("DeleteItem")]
+        [HttpDelete("{id}")]
+        [SwaggerOperation(nameof(DeleteItemAsync))]
         [SwaggerResponse(StatusCodes.Status201Created, "Deletes a Item.", typeof(Item))]
         [SwaggerResponse(StatusCodes.Status400BadRequest, "Item data is invalid.")]
-        public IActionResult DeleteItem([FromQuery] int id)
+        public async Task<IActionResult> DeleteItemAsync([FromQuery] int id)
         {
-            _itemService.DeleteItem(id);
+            await _itemService.DeleteItemAsync(id);
             return Ok();
         }
 

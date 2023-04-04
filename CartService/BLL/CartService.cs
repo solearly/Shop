@@ -1,4 +1,5 @@
-﻿using CartService.DAL.Interfaces;
+﻿using System.Threading.Tasks;
+using CartService.DAL.Interfaces;
 using CartService.Models;
 
 namespace CartService.DAL
@@ -18,20 +19,20 @@ namespace CartService.DAL
                 _cartRepository = cartRepository;
             }
 
-            public List<Item> GetItems(int cartId)
+            public async Task<IList<Item>> GetItems(int cartId)
             {
-                var cartItems = _cartRepository.GetItems(cartId);
+                var cartItems = await _cartRepository.GetItems(cartId);
                 return cartItems;
             }
 
-            public void AddItem(int cartId, Item item)
+            public async Task AddItem(int cartId, Item item)
             {
-                _cartRepository.Add(cartId, item);
+                await _cartRepository.Add(cartId, item);
             }
 
-            public void RemoveItem(int cartId, int id)
+            public async Task RemoveItem(int cartId, int id)
             {
-                _cartRepository.Remove(cartId, id);
+                await _cartRepository.Remove(cartId, id);
             }
         }
     }

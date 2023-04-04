@@ -1,18 +1,19 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Catalog.DAL.Models;
 
 namespace Catalog.DAL.Repositories.Interfaces
 {
     public interface IItemRepository
     {
-        public IEnumerable<ItemDto> GetItems();
+        public Task<IEnumerable<Item>> GetItemsAsync();
 
-        public ItemDto GetItemById(int itemId);
+        public Task<Item> GetItemByIdAsync(int itemId);
 
-        public void AddItem(ItemDto item);
+        public Task<Item> AddItemAsync(Item item);
 
-        public void UpdateItem(ItemDto item);
+        public Task<Item> UpdateItemAsync(Item item);
 
-        public void DeleteItem(int itemId);
+        public Task DeleteItemAsync(int itemId);
     }
 }

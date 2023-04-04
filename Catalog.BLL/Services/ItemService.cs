@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using AutoMapper;
 using Catalog.BLL.Services.Interfaces;
 using Catalog.DAL.Models;
 using Catalog.DAL.Repositories.Interfaces;
@@ -8,35 +10,39 @@ namespace Catalog.BLL.Services
     public class ItemService : IItemService
     {
         private readonly IItemRepository _itemRepository;
+        private readonly IMapper _mapper;
 
-        public ItemService(IItemRepository itemRepository)
+        public ItemService(IItemRepository itemRepository, IMapper mapper)
         {
             _itemRepository = itemRepository;
+            _mapper = mapper;
         }
 
-        public IEnumerable<ItemDto> GetItems()
+        public async Task<IEnumerable<ItemDto>> GetItemsAsync()
         {
-            return _itemRepository.GetItems();
+            return _mapper.Map<List<ItemDto>>(await _itemRepository.GetItemsAsync());
         }
 
-        public ItemDto GetItemById(int itemId)
+        public async Task<ItemDto> GetItemByIdAsync(int itemId)
         {
-            return _itemRepository.GetItemById(itemId);
+            return  _mapper.Map<ItemDto>(await _itemRepository.GetItemByIdAsync(itemId));
         }
 
-        public void AddItem(ItemDto item)
+        public async Task<ItemDto> AddItemAsync(ItemDto item)
         {
-            _itemRepository.AddItem(item);
+            var itemEntity = _mapper.Map<Item>(item);
+            return _mapper.Map<ItemDto>(await _itemRepository.AddItemAsync(itemEntity));
         }
 
-        public void UpdateItem(ItemDto item)
+        public async Task<ItemDto> UpdateItemAsync(ItemDto item)
         {
-            _itemRepository.UpdateItem(item);
+            var itemEntity = _mapper.Map<Item>(item);
+            return _mapper.Map<ItemDto>(await _itemRepository.UpdateItemAsync(itemEntity));
         }
 
-        public void DeleteItem(int itemId)
+        public async Task DeleteItemAsync(int itemId)
         {
-            _itemRepository.DeleteItem(itemId);
+            await _itemRepository.DeleteItemAsync(itemId);
         }
     }
 }

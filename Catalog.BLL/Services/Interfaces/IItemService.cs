@@ -1,14 +1,15 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Catalog.DAL.Models;
 
 namespace Catalog.BLL.Services.Interfaces
 {
     public interface IItemService
     {
-        public IEnumerable<ItemDto> GetItems();
-        public ItemDto GetItemById(int itemId);
-        public void AddItem(ItemDto item);
-        public void UpdateItem(ItemDto item);
-        public void DeleteItem(int itemId);
+        public Task<IEnumerable<ItemDto>> GetItemsAsync();
+        public Task<ItemDto> GetItemByIdAsync(int itemId);
+        public Task<ItemDto> AddItemAsync(ItemDto item);
+        public Task<ItemDto> UpdateItemAsync(ItemDto item);
+        public Task DeleteItemAsync(int itemId);
     }
 }

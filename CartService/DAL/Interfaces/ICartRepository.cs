@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using CartService.Models;
 
 namespace CartService.DAL.Interfaces
 {
     public interface ICartRepository
     {
-        public List<Item> GetItems(int cartId);
-        public void Add(int cartId, Item item);
-        public void Remove(int cartId, int itemId);
+        public Task<IList<Item>> GetItems(int cartId);
+        public Task Add(int cartId, Item item);
+        public Task Remove(int cartId, int itemId);
     }
 }

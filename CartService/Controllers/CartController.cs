@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using CartService.DAL.Interfaces;
 using CartService.Models;
 using Microsoft.AspNetCore.Http;
@@ -10,7 +11,7 @@ namespace CartService.Controllers
 {
 
 [ApiController]
-    [Route("[controller]")]
+    [Route("[controller]/{cartId}/items")]
     public class CartController : ControllerBase
     {
         private readonly ICartService _cartManager;
@@ -20,7 +21,7 @@ namespace CartService.Controllers
             _cartManager = cartManager;
         }
 
-        [HttpPost("{cartId}/items")]
+        [HttpPost]
         [SwaggerOperation(Summary = "Add an item to a cart")]
         [SwaggerResponse(200, "The item was added successfully")]
         [SwaggerResponse(400, "The request was invalid")]
@@ -34,7 +35,7 @@ namespace CartService.Controllers
             return Ok();
         }
 
-        [HttpDelete("{cartId}/items/{itemId}")]
+        [HttpDelete("{itemId}")]
         [SwaggerOperation(Summary = "Remove an item from a cart")]
         [SwaggerResponse(200, "The item was removed successfully")]
         [SwaggerResponse(404, "The item or cart was not found")]
@@ -44,13 +45,13 @@ namespace CartService.Controllers
             return Ok();
         }
 
-        [HttpGet("{cartId}/items")]
+        [HttpGet]
         [SwaggerOperation(Summary = "Get all items in a cart")]
-        [SwaggerResponse(200, "The items were found", typeof(List<Item>))]
+        [SwaggerResponse(200, "The items were found", typeof(IList<Item>))]
         [SwaggerResponse(404, "The cart was not found")]
-        public ActionResult<List<Item>> GetItems(int cartId)
+        public async Task<IActionResult> GetItems(int cartId)
         {
-            var items = _cartManager.GetItems(cartId);
+            var items = await _cartManager.GetItems(cartId);
             return Ok(items);
         }
     }    

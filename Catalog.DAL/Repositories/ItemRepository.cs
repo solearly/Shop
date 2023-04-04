@@ -1,53 +1,53 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using AutoMapper;
 using Catalog.DAL.Models;
 using Catalog.DAL.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Catalog.DAL.Repositories
 {
     public class ItemRepository : IItemRepository
     {
         private readonly CatalogDbContext _dbContext;
-        private readonly IMapper _mapper;
 
         public ItemRepository(CatalogDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
-            _mapper = mapper;
         }
 
-        public IEnumerable<ItemDto> GetItems()
+        public async Task<IEnumerable<Item>> GetItemsAsync()
         {
-            var list = _dbContext.Items.ToList();
-            return _mapper.Map<List<ItemDto>>(list);
+            var list = await _dbContext.Items.ToListAsync();
+            return list;
         }
 
-        public ItemDto GetItemById(int itemId)
+        public async Task<Item> GetItemByIdAsync(int itemId)
         {
-            var item = _dbContext.Items.Find(itemId);
-            return _mapper.Map<ItemDto>(item);
+            var item = await _dbContext.Items.FindAsync(itemId);
+            return item;
         }
 
-        public void AddItem(ItemDto item)
+        public async Task<Item> AddItemAsync(Item item)
         {
-            var itemEntity = _mapper.Map<Item>(item);
-            _dbContext.Items.Add(itemEntity);
-            _dbContext.SaveChanges();
+            _dbContext.Items.Add(item);
+            await _dbContext.SaveChangesAsync();
+            return item;
         }
 
-        public void UpdateItem(ItemDto item)
+        public async Task<Item> UpdateItemAsync(Item item)
         {
-            var itemEntity = _mapper.Map<Item>(item);
-            _dbContext.Items.Update(itemEntity);
-            _dbContext.SaveChanges();
+            _dbContext.Items.Update(item);
+            await _dbContext.SaveChangesAsync();
+            return item;
         }
 
-        public void DeleteItem(int itemId)
+        public async Task DeleteItemAsync(int itemId)
         {
             var item = _dbContext.Items.Find(itemId);
             _dbContext.Items.Remove(item);
-            _dbContext.SaveChanges();
+            await _dbContext.SaveChangesAsync();
         }
     }
 }
