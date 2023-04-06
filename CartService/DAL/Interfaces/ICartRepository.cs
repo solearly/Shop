@@ -6,8 +6,8 @@ namespace CartService.DAL.Interfaces
 {
     public interface ICartRepository
     {
-        public Task<IList<Item>> GetItems(int cartId);
-        public Task Add(int cartId, Item item);
-        public Task Remove(int cartId, int itemId);
+        public Task<IList<Item>> GetItemsAsync(string cartId);
+        public Task AddAsync(string cartId, Item item);
+        public Task RemoveAsync(string cartId, int itemId);
     }
 }

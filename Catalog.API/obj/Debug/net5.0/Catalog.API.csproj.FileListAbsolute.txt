@@ -12,11 +12,14 @@ C:\MyTemp\Learning\Shop\Catalog.API\bin\Debug\net5.0\AutoMapper.Extensions.Expre
 C:\MyTemp\Learning\Shop\Catalog.API\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\MyTemp\Learning\Shop\Catalog.API\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
 C:\MyTemp\Learning\Shop\Catalog.API\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\MyTemp\Learning\Shop\Catalog.API\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\MyTemp\Learning\Shop\Catalog.API\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
 C:\MyTemp\Learning\Shop\Catalog.API\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\MyTemp\Learning\Shop\Catalog.API\bin\Debug\net5.0\Microsoft.Extensions.Options.dll
 C:\MyTemp\Learning\Shop\Catalog.API\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
 C:\MyTemp\Learning\Shop\Catalog.API\bin\Debug\net5.0\Microsoft.OpenApi.dll
+C:\MyTemp\Learning\Shop\Catalog.API\bin\Debug\net5.0\Npgsql.dll
+C:\MyTemp\Learning\Shop\Catalog.API\bin\Debug\net5.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 C:\MyTemp\Learning\Shop\Catalog.API\bin\Debug\net5.0\Swashbuckle.AspNetCore.Annotations.dll
 C:\MyTemp\Learning\Shop\Catalog.API\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\MyTemp\Learning\Shop\Catalog.API\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
@@ -45,6 +48,3 @@ C:\MyTemp\Learning\Shop\Catalog.API\obj\Debug\net5.0\Catalog.API.dll
 C:\MyTemp\Learning\Shop\Catalog.API\obj\Debug\net5.0\ref\Catalog.API.dll
 C:\MyTemp\Learning\Shop\Catalog.API\obj\Debug\net5.0\Catalog.API.pdb
 C:\MyTemp\Learning\Shop\Catalog.API\obj\Debug\net5.0\Catalog.API.genruntimeconfig.cache
-C:\MyTemp\Learning\Shop\Catalog.API\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
-C:\MyTemp\Learning\Shop\Catalog.API\bin\Debug\net5.0\Npgsql.dll
-C:\MyTemp\Learning\Shop\Catalog.API\bin\Debug\net5.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll

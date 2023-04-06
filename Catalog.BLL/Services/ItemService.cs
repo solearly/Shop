@@ -18,9 +18,9 @@ namespace Catalog.BLL.Services
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<ItemDto>> GetItemsAsync()
+        public async Task<IEnumerable<ItemDto>> GetItemsAsync(int categoryId, int page, int pageSize)
         {
-            return _mapper.Map<List<ItemDto>>(await _itemRepository.GetItemsAsync());
+            return _mapper.Map<List<ItemDto>>(await _itemRepository.GetItemsAsync(categoryId, page, pageSize));
         }
 
         public async Task<ItemDto> GetItemByIdAsync(int itemId)

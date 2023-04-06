@@ -6,7 +6,7 @@ namespace Catalog.BLL.Services.Interfaces
 {
     public interface IItemService
     {
-        public Task<IEnumerable<ItemDto>> GetItemsAsync();
+        public Task<IEnumerable<ItemDto>> GetItemsAsync(int categoryId, int page, int pageSize);
         public Task<ItemDto> GetItemByIdAsync(int itemId);
         public Task<ItemDto> AddItemAsync(ItemDto item);
         public Task<ItemDto> UpdateItemAsync(ItemDto item);

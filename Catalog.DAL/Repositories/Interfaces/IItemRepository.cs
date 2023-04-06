@@ -6,7 +6,7 @@ namespace Catalog.DAL.Repositories.Interfaces
 {
     public interface IItemRepository
     {
-        public Task<IEnumerable<Item>> GetItemsAsync();
+        public Task<IEnumerable<Item>> GetItemsAsync(int categoryId, int page, int pageSize);
 
         public Task<Item> GetItemByIdAsync(int itemId);
 

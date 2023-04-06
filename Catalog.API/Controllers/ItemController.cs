@@ -19,12 +19,12 @@ namespace Catalog.API.Controllers
             _itemService = itemService;
         }
 
-        [HttpGet]
+        [HttpGet("{categoryId}/{page}/{pageSize}")]
         [SwaggerOperation(nameof(GetAllItemsAsync))]
         [SwaggerResponse(StatusCodes.Status200OK, "List of all items.", typeof(IList<Item>))]
-        public async Task<IActionResult> GetAllItemsAsync()
+        public async Task<IActionResult> GetAllItemsAsync([FromRoute] int categoryId, [FromRoute] int page, [FromRoute] int pageSize)
         {
-            var items = await _itemService.GetItemsAsync();
+            var items = await _itemService.GetItemsAsync(categoryId, page, pageSize);
             return Ok(items);
         }
 

@@ -19,7 +19,7 @@ namespace CartService.DAL
                 _db = db;
             }
 
-            public async Task<IList<Item>> GetItems(int cartId)
+            public async Task<IList<Item>> GetItemsAsync(string cartId)
             {
                 var cartItems = _db.GetCollection<Item>("Cart")
                     .FindAll()
@@ -28,7 +28,7 @@ namespace CartService.DAL
                 return await Task.FromResult<IList<Item>>(cartItems);
             }
 
-            public async Task Add(int cartId, Item item)
+            public async Task AddAsync(string cartId, Item item)
             {
                 item.CartId = cartId;
                 var cartItems = _db.GetCollection<Item>("Cart");
@@ -36,7 +36,7 @@ namespace CartService.DAL
                 await Task.CompletedTask;
             }
 
-            public async Task Remove(int cartId, int itemId)
+            public async Task RemoveAsync(string cartId, int itemId)
             {
                 var cartItems = _db.GetCollection<Item>("Cart");
                 cartItems.Delete(itemId);

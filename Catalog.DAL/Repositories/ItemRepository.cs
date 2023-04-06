@@ -17,9 +17,13 @@ namespace Catalog.DAL.Repositories
             _dbContext = dbContext;
         }
 
-        public async Task<IEnumerable<Item>> GetItemsAsync()
+        public async Task<IEnumerable<Item>> GetItemsAsync(int categoryId, int page, int pageSize)
         {
-            var list = await _dbContext.Items.ToListAsync();
+            var list = await _dbContext.Items
+                .Where(x => x.CategoryId == categoryId)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
             return list;
         }
 

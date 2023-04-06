@@ -19,20 +19,31 @@ namespace CartService.DAL
                 _cartRepository = cartRepository;
             }
 
-            public async Task<IList<Item>> GetItems(int cartId)
+            public async Task<Cart> GetCartAsync(string cartId)
             {
-                var cartItems = await _cartRepository.GetItems(cartId);
+                var cartItems = await _cartRepository.GetItemsAsync(cartId);
+                var cart = new Cart
+                {
+                    Id = cartId,
+                    Items = cartItems
+                };
+                return cart;
+            }
+
+            public async Task<IList<Item>> GetItemsAsync(string cartId)
+            {
+                var cartItems = await _cartRepository.GetItemsAsync(cartId);
                 return cartItems;
             }
 
-            public async Task AddItem(int cartId, Item item)
+            public async Task AddItemAsync(string cartId, Item item)
             {
-                await _cartRepository.Add(cartId, item);
+                await _cartRepository.AddAsync(cartId, item);
             }
 
-            public async Task RemoveItem(int cartId, int id)
+            public async Task RemoveItemAsync(string cartId, int id)
             {
-                await _cartRepository.Remove(cartId, id);
+                await _cartRepository.RemoveAsync(cartId, id);
             }
         }
     }

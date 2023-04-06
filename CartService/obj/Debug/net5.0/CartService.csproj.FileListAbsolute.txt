@@ -8,6 +8,8 @@ C:\MyTemp\Learning\Shop\CartService\bin\Debug\net5.0\CartService.dll
 C:\MyTemp\Learning\Shop\CartService\bin\Debug\net5.0\ref\CartService.dll
 C:\MyTemp\Learning\Shop\CartService\bin\Debug\net5.0\CartService.pdb
 C:\MyTemp\Learning\Shop\CartService\bin\Debug\net5.0\LiteDB.dll
+C:\MyTemp\Learning\Shop\CartService\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.Versioning.dll
+C:\MyTemp\Learning\Shop\CartService\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer.dll
 C:\MyTemp\Learning\Shop\CartService\bin\Debug\net5.0\Microsoft.OpenApi.dll
 C:\MyTemp\Learning\Shop\CartService\bin\Debug\net5.0\Swashbuckle.AspNetCore.Annotations.dll
 C:\MyTemp\Learning\Shop\CartService\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll

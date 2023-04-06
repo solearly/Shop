@@ -10,13 +10,13 @@ using Swashbuckle.AspNetCore.Annotations;
 namespace CartService.Controllers
 {
 
-[ApiController]
-    [Route("[controller]/{cartId}/items")]
-    public class CartController : ControllerBase
+    [ApiController]
+    [Route("v{version:apiVersion}/[controller]/{cartId}/items")]
+    public abstract class BaseCartController : ControllerBase
     {
-        private readonly ICartService _cartManager;
+        protected readonly ICartService _cartManager;
 
-        public CartController(ICartService cartManager)
+        public BaseCartController(ICartService cartManager)
         {
             _cartManager = cartManager;
         }
@@ -25,13 +25,13 @@ namespace CartService.Controllers
         [SwaggerOperation(Summary = "Add an item to a cart")]
         [SwaggerResponse(200, "The item was added successfully")]
         [SwaggerResponse(400, "The request was invalid")]
-        public ActionResult AddItem(int cartId, [FromBody] Item item)
+        public ActionResult AddItemAsync(string cartId, [FromBody] Item item)
         {
             if (item == null)
             {
                 return BadRequest();
             }
-            _cartManager.AddItem(cartId, item);
+            _cartManager.AddItemAsync(cartId, item);
             return Ok();
         }
 
@@ -39,20 +39,11 @@ namespace CartService.Controllers
         [SwaggerOperation(Summary = "Remove an item from a cart")]
         [SwaggerResponse(200, "The item was removed successfully")]
         [SwaggerResponse(404, "The item or cart was not found")]
-        public ActionResult RemoveItem(int cartId, int itemId)
+        public ActionResult RemoveItemAsync(string cartId, int itemId)
         {
-            _cartManager.RemoveItem(cartId, itemId);
+            _cartManager.RemoveItemAsync(cartId, itemId);
             return Ok();
         }
 
-        [HttpGet]
-        [SwaggerOperation(Summary = "Get all items in a cart")]
-        [SwaggerResponse(200, "The items were found", typeof(IList<Item>))]
-        [SwaggerResponse(404, "The cart was not found")]
-        public async Task<IActionResult> GetItems(int cartId)
-        {
-            var items = await _cartManager.GetItems(cartId);
-            return Ok(items);
-        }
     }    
 }
