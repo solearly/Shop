@@ -1,0 +1,12 @@
+C:\MyTemp\Learning\Shop\Catalog.Entities\bin\Debug\net5.0\Catalog.Entities.deps.json
+C:\MyTemp\Learning\Shop\Catalog.Entities\bin\Debug\net5.0\Catalog.Entities.dll
+C:\MyTemp\Learning\Shop\Catalog.Entities\bin\Debug\net5.0\ref\Catalog.Entities.dll
+C:\MyTemp\Learning\Shop\Catalog.Entities\bin\Debug\net5.0\Catalog.Entities.pdb
+C:\MyTemp\Learning\Shop\Catalog.Entities\obj\Debug\net5.0\Catalog.Entities.csproj.AssemblyReference.cache
+C:\MyTemp\Learning\Shop\Catalog.Entities\obj\Debug\net5.0\Catalog.Entities.GeneratedMSBuildEditorConfig.editorconfig
+C:\MyTemp\Learning\Shop\Catalog.Entities\obj\Debug\net5.0\Catalog.Entities.AssemblyInfoInputs.cache
+C:\MyTemp\Learning\Shop\Catalog.Entities\obj\Debug\net5.0\Catalog.Entities.AssemblyInfo.cs
+C:\MyTemp\Learning\Shop\Catalog.Entities\obj\Debug\net5.0\Catalog.Entities.csproj.CoreCompileInputs.cache
+C:\MyTemp\Learning\Shop\Catalog.Entities\obj\Debug\net5.0\Catalog.Entities.dll
+C:\MyTemp\Learning\Shop\Catalog.Entities\obj\Debug\net5.0\ref\Catalog.Entities.dll
+C:\MyTemp\Learning\Shop\Catalog.Entities\obj\Debug\net5.0\Catalog.Entities.pdb
